@@ -1,0 +1,8 @@
+[flake8]
+exclude = 
+    .git,
+    migrations,
+    docs/source/conf.py,
+    old,
+    manage.py
+    settings.py
