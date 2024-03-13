@@ -21,7 +21,6 @@ RentRestful is designed to simplify the process of renting accommodations. It pr
 ## Technologies
 
 - **Frontend:**
-  - Next.js
   - React.js
   - Tailwind CSS
 
