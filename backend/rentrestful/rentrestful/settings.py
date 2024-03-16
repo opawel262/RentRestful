@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'drf_spectacular',
+    
+    # Local apps
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +147,4 @@ SPECTACULAR_SETTINGS = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+AUTH_USER_MODEL = 'user.User'
