@@ -6,6 +6,7 @@ from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin
 )
+from django.core.validators import EmailValidator
 
 
 class UserManager(BaseUserManager):
@@ -16,8 +17,8 @@ class UserManager(BaseUserManager):
         """
         Create and return a user
         """
-        if not email:
-            raise ValueError('Users must have an email address')
+        self.validate_email(email)
+
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -32,6 +33,13 @@ class UserManager(BaseUserManager):
         user.is_superuser = True
         user.save(using=self._db)
         return user
+    
+    def validate_email(self, email):
+        """
+        Validate email format
+        """
+        email_validator = EmailValidator(message='Please enter a valid email address.')
+        email_validator(email)
     
     
 class User(AbstractBaseUser, PermissionsMixin):
@@ -49,4 +57,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-    
