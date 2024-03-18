@@ -7,3 +7,5 @@ exclude =
     manage.py
     settings.py
 max-line-length = 121
+ignore = W293
+max-complexity = 10
